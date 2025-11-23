@@ -50,8 +50,11 @@ keypad.addEventListener('click', (event) => {
 
     if (element.classList.contains('digit')) {
         console.log(`Digit ${element.textContent} pressed!`);
+        if (element.textContent === '.' && tempNumber.includes('.')) {
+            return;
+        }
         tempNumber += element.textContent;
-        displayNumber(tempNumber);
+            displayNumber(tempNumber);
     } else if (element.classList.contains('operator')) {
         console.log(`Operator ${operator} pressed!`);
         if (element.textContent === '=') {
