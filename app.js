@@ -61,7 +61,7 @@ keypad.addEventListener('click', (event) => {
                 rightOperand = null;
                 tempNumber = '';
                 displayNumber(tempNumber);
-                alert('Trying to divide by zero? Not happening.');
+                alert('Trying to divide by zero? Not happening. Try another number');
                 return;
             }
             leftOperand = round(operate(leftOperand, operator, rightOperand));
@@ -84,7 +84,7 @@ keypad.addEventListener('click', (event) => {
                     rightOperand = null;
                     tempNumber = '';
                     displayNumber(tempNumber);
-                    alert('Trying to divide by zero? Not happening.');
+                    alert('Trying to divide by zero? Not happening. Try another number');
                     return;
                 }
                 //so perform the previously selected operation,
