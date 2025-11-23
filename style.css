@@ -27,6 +27,9 @@ body {
 
 .container {
     width: 400px;
+    padding: 10px;
+    background-color: var(--bg);
+    border-radius: 10px;
     display: flex;
     flex-direction: column;
     margin: 20vh auto;
@@ -34,10 +37,11 @@ body {
 }
 
 .display {
-    padding: 0.5rem 8px;
-    height: 40px;
-    border: 1px solid var(--border);
-    background-color: var(--bg-light);
+    padding: 1rem 8px;
+    height: 50px;
+    /* border: 1px solid var(--border); */
+    border-radius: 10px;
+    background-color: var(--highlight);
     text-align: end;
 }
 
@@ -55,8 +59,8 @@ body {
 .btn {
     border: 0;
     padding: 24px;
-    border: 0.5px solid var(--border);
-    background-color: var(--bg);
+    border-radius: 10px;
+    background-color: var(--bg-light);
     color: var(--text);
     flex: 1 1;
     cursor: pointer;
@@ -67,7 +71,20 @@ body {
     opacity: 0.6;
 }
 
-.btn.clear,
-.btn.zero {
+.btn.clear {
     flex: 5.5 1;
+}
+
+.btn.clear {
+    background-color: red;
+    color: white;
+    font-weight: bold;
+}
+
+.btn.operator {
+    background-color: orange;
+}
+
+.btn.equalto {
+    flex: 0.15 1 auto;
 }
