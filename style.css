@@ -26,9 +26,10 @@ body {
 }
 
 .container {
+    width: 400px;
     display: flex;
     flex-direction: column;
-    margin: 20vh 20vw;
+    margin: 20vh auto;
     gap: 8px;
 }
 
