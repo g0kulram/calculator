@@ -33,9 +33,11 @@ body {
 }
 
 .display {
+    padding: 0.5rem 8px;
     height: 40px;
     border: 1px solid var(--border);
     background-color: var(--bg-light);
+    text-align: end;
 }
 
 .keypad {
