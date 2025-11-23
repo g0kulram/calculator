@@ -48,7 +48,7 @@ body {
 .keypad {
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 8px;
 }
 
 .button-row {
@@ -71,12 +71,19 @@ body {
     opacity: 0.6;
 }
 
-.btn.clear {
-    flex: 5.5 1;
+.btn.clear,
+.btn.delete {
+    flex: 2.1 1;
 }
 
 .btn.clear {
     background-color: red;
+    color: white;
+    font-weight: bold;
+}
+
+.btn.delete {
+    background-color: purple;
     color: white;
     font-weight: bold;
 }

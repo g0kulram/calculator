@@ -114,6 +114,12 @@ keypad.addEventListener('click', (event) => {
         rightOperand = null;
         tempNumber = '';
         displayNumber(tempNumber);
+    } else if (element.classList.contains('delete')) {
+        console.log('Delete pressed!');
+        if (tempNumber.length > 0) {
+            tempNumber = tempNumber.slice(0, -1);
+            displayNumber(tempNumber);
+        }
     }
 });
 
