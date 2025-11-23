@@ -65,7 +65,8 @@ keypad.addEventListener('click', (event) => {
                 return;
             }
             leftOperand = round(operate(leftOperand, operator, rightOperand));
-            displayNumber(leftOperand);
+            tempNumber = String(leftOperand);
+            displayNumber(tempNumber);
         } else {
             if (leftOperand === null) {
                 //if left is null, it means its the first ever entry of calculator
@@ -95,7 +96,8 @@ keypad.addEventListener('click', (event) => {
                 //and finally null the right operand
                 rightOperand = null;
                 //now display the leftOperand
-                displayNumber(leftOperand);
+                tempNumber = String(leftOperand);
+                displayNumber(tempNumber);
                 tempNumber = '';
             } else {
                 //control comes here after an 'equal to' operation
