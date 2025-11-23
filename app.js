@@ -55,18 +55,21 @@ keypad.addEventListener('click', (event) => {
     } else if (element.classList.contains('operator')) {
         console.log(`Operator ${operator} pressed!`);
         if (element.textContent === '=') {
-            rightOperand = +tempNumber;
-            //check for zero division
-            if (operator === '/' && rightOperand === 0) {
-                rightOperand = null;
-                tempNumber = '';
+            if (operator != '=') {
+                rightOperand = +tempNumber;
+                //check for zero division
+                if (operator === '/' && rightOperand === 0) {
+                    rightOperand = null;
+                    tempNumber = '';
+                    displayNumber(tempNumber);
+                    alert('Trying to divide by zero? Not happening. Try another number');
+                    return;
+                }
+                leftOperand = round(operate(leftOperand, operator, rightOperand));
+                tempNumber = String(leftOperand);
                 displayNumber(tempNumber);
-                alert('Trying to divide by zero? Not happening. Try another number');
-                return;
+                operator = '=';
             }
-            leftOperand = round(operate(leftOperand, operator, rightOperand));
-            tempNumber = String(leftOperand);
-            displayNumber(tempNumber);
         } else {
             if (leftOperand === null) {
                 //if left is null, it means its the first ever entry of calculator
