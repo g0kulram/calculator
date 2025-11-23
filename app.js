@@ -143,7 +143,8 @@ function onOperatorClicked(operation) {
 function onDeleteClicked() {
     console.log('Delete pressed!');
     if (tempNumber.length > 0) {
-        displayNumber(tempNumber.slice(0, -1));
+        leftOperand = tempNumber.slice(0, -1);
+        displayNumber(leftOperand);
     }
 }
 
