@@ -47,10 +47,7 @@ function displayNumber(num) {
 let tempNumber = '';
 keypad.addEventListener('click', (event) => {
     const element = event.target;
-    //check if left operand is null, if so assign the value to it
-    //if the left operand is not null, check if right operand is null
-    //if right operand is null, assign the value to it
-    //if right operand is not null, operate
+
     if (element.classList.contains('digit')) {
         console.log(`Digit ${element.textContent} pressed!`);
         tempNumber += element.textContent;
@@ -62,9 +59,13 @@ keypad.addEventListener('click', (event) => {
             leftOperand = operate(leftOperand, operator, rightOperand);
             displayNumber(leftOperand);
         } else {
-            if (leftOperand === null) { //if left is null, it means its the first entry
+            if (leftOperand === null) { 
+                //if left is null, it means its the first ever entry of calculator
+                //assign the leftOperand
                 leftOperand = +tempNumber;
+                //store the operator
                 operator = element.textContent;
+                //empty the tempNumber
                 tempNumber = '';
                 //now calculator is ready to accept the right operand
             } else if (rightOperand === null) {
@@ -81,7 +82,13 @@ keypad.addEventListener('click', (event) => {
                 displayNumber(leftOperand);
                 tempNumber = '';
             } else {
-                console.log('Else of the else block');
+                //control comes here after an 'equal to' operation
+                //null the rightOperand to enable next operation
+                rightOperand = null;
+                //store the operator to perform
+                operator = element.textContent;
+                //empty the tempNumber to accept the next number
+                tempNumber = '';
             }
         }
     } else if (element.classList.contains('clear')) {
