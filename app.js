@@ -56,10 +56,18 @@ keypad.addEventListener('click', (event) => {
         console.log(`Operator ${operator} pressed!`);
         if (element.textContent === '=') {
             rightOperand = +tempNumber;
-            leftOperand = operate(leftOperand, operator, rightOperand);
+            //check for zero division
+            if (operator === '/' && rightOperand === 0) {
+                rightOperand = null;
+                tempNumber = '';
+                displayNumber(tempNumber);
+                alert('Trying to divide by zero? Not happening.');
+                return;
+            }
+            leftOperand = round(operate(leftOperand, operator, rightOperand));
             displayNumber(leftOperand);
         } else {
-            if (leftOperand === null) { 
+            if (leftOperand === null) {
                 //if left is null, it means its the first ever entry of calculator
                 //assign the leftOperand
                 leftOperand = +tempNumber;
@@ -71,9 +79,17 @@ keypad.addEventListener('click', (event) => {
             } else if (rightOperand === null) {
                 //if right is null, it means left operand is available
                 rightOperand = +tempNumber;
+                //check for zero division
+                if (operator === '/' && rightOperand === 0) {
+                    rightOperand = null;
+                    tempNumber = '';
+                    displayNumber(tempNumber);
+                    alert('Trying to divide by zero? Not happening.');
+                    return;
+                }
                 //so perform the previously selected operation,
                 //and store the value in leftOperand
-                leftOperand = operate(leftOperand, operator, rightOperand);
+                leftOperand = round(operate(leftOperand, operator, rightOperand));
                 //and then assign operator its new operation
                 operator = element.textContent;
                 //and finally null the right operand
@@ -100,3 +116,12 @@ keypad.addEventListener('click', (event) => {
         displayNumber(tempNumber);
     }
 });
+
+function round(num) {
+    if (Number.isInteger(num)) {
+        return Number.parseInt(num);
+    } else {
+        const newNum = num.toFixed(2);
+        return (+newNum);
+    }
+}
