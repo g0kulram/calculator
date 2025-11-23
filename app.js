@@ -41,7 +41,8 @@ function operate(left, operation, right) {
 }
 
 function displayNumber(num) {
-    display.textContent = num
+    tempNumber = num;
+    display.textContent = tempNumber;
 }
 
 let tempNumber = '';
@@ -53,8 +54,7 @@ keypad.addEventListener('click', (event) => {
         if (element.textContent === '.' && tempNumber.includes('.')) {
             return;
         }
-        tempNumber += element.textContent;
-            displayNumber(tempNumber);
+        displayNumber(tempNumber + element.textContent);
     } else if (element.classList.contains('operator')) {
         console.log(`Operator ${operator} pressed!`);
         if (element.textContent === '=') {
@@ -63,14 +63,12 @@ keypad.addEventListener('click', (event) => {
                 //check for zero division
                 if (operator === '/' && rightOperand === 0) {
                     rightOperand = null;
-                    tempNumber = '';
-                    displayNumber(tempNumber);
+                    displayNumber('');
                     alert('Trying to divide by zero? Not happening. Try another number');
                     return;
                 }
                 leftOperand = round(operate(leftOperand, operator, rightOperand));
-                tempNumber = String(leftOperand);
-                displayNumber(tempNumber);
+                displayNumber(String(leftOperand));
                 operator = '=';
             }
         } else {
@@ -89,8 +87,7 @@ keypad.addEventListener('click', (event) => {
                 //check for zero division
                 if (operator === '/' && rightOperand === 0) {
                     rightOperand = null;
-                    tempNumber = '';
-                    displayNumber(tempNumber);
+                    displayNumber('');
                     alert('Trying to divide by zero? Not happening. Try another number');
                     return;
                 }
@@ -102,8 +99,7 @@ keypad.addEventListener('click', (event) => {
                 //and finally null the right operand
                 rightOperand = null;
                 //now display the leftOperand
-                tempNumber = String(leftOperand);
-                displayNumber(tempNumber);
+                displayNumber(String(leftOperand));
                 tempNumber = '';
             } else {
                 //control comes here after an 'equal to' operation
@@ -120,13 +116,11 @@ keypad.addEventListener('click', (event) => {
         leftOperand = null;
         operator = null;
         rightOperand = null;
-        tempNumber = '';
-        displayNumber(tempNumber);
+        displayNumber('');
     } else if (element.classList.contains('delete')) {
         console.log('Delete pressed!');
         if (tempNumber.length > 0) {
-            tempNumber = tempNumber.slice(0, -1);
-            displayNumber(tempNumber);
+            displayNumber(tempNumber.slice(0, -1));
         }
     }
 });
